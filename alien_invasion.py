@@ -1,7 +1,10 @@
 import sys
+from turtle import Screen
 # the tools in sys module can be used to quit the game when the player wants
 
 import pygame
+
+from settings import Settings
 
 
 class AlienInvasion:
@@ -10,10 +13,11 @@ class AlienInvasion:
     def __init__(self):
         """Initialize the game and create resources."""
         pygame.init()
+        self.settings = Settings()
 
-        # game window which will be 1200 pixel wide and 800 pixel height
-        self.screen = pygame.display.set_mode((1200, 800))
-        pygame.display.set_caption("Alien Invasion By @Sushovit204")
+        self.screen = pygame.display.set_mode((self.settings.screen_width,
+                                              self.settings.screen_height))
+        pygame.display.set_caption("Alien Invasion by @Sushovit204")
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -22,6 +26,9 @@ class AlienInvasion:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
+
+            # Redraw the screen during each pass through the loop.
+            self.screen.fill(self.settings.bg_color)
 
             # Make the most recently drawn screen visible.
             pygame.display.flip()
