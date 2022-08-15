@@ -5,6 +5,7 @@ from turtle import Screen
 import pygame
 
 from settings import Settings
+from ship import Ship
 
 
 class AlienInvasion:
