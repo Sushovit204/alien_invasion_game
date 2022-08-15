@@ -1,3 +1,4 @@
 Press and hold right arrow '->' to move right
 Press and hold left arrow '<-' to move left
+Press Spacebar to fire bullets
 press 'q' to quit
