@@ -7,10 +7,10 @@ class Ship:
     def __init__(self, ai_game):
         """Initialzie the  ship and  set its starting position."""
         self.screen = ai_game.screen
-        self.screen = ai_game.screen.get_rect()
+        self.screen_rect = ai_game.screen.get_rect()
 
         # Load the ship image and get the rect
-        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.image.load('images/spaceship.bmp')
         self.rect = self.image.get_rect()
 
         # start each new ship at the bottom of the map
