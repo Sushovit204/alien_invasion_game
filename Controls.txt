@@ -1,0 +1,3 @@
+Press and hold right arrow '->' to move right
+Press and hold left arrow '<-' to move left
+press 'q' to quit
