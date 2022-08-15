@@ -1,0 +1,1 @@
+This is an alien invasion game written in python.
