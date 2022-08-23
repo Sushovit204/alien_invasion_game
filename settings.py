@@ -20,7 +20,7 @@ class Settings:
         self.alien_speed = 1.0
         # this fleet_drop_speed should be 1 as the fleet should come down after reaching edge
         # but some problem causes the fleet to come down at once
-        self.fleet_drop_speed = 1
+        self.fleet_drop_speed = 0
 
         # fleet_direction of 1 represents right and -1 represents left
         self.fleet_direction = 1

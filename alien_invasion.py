@@ -7,6 +7,7 @@ import pygame
 from time import sleep
 from settings import Settings
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
 from ship import Ship
 from bullet import Bullet
@@ -26,7 +27,9 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion by @Sushovit204")
 
         # Create an instance of the game stats
+        # and to display the score
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -65,6 +68,7 @@ class AlienInvasion:
             sleep(0.5)
         else:
             self.stats.game_active = False
+            pygame.mouse.set_visible(True)
 
     def _check_events(self):
         # Watch for keyboard and mouse events.
@@ -220,6 +224,9 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.aliens.draw(self.screen)
+
+        # Draw the score board information
+        self.sb.show_score()
 
         # Make play button if the game is inactive
         if not self.stats.game_active:
