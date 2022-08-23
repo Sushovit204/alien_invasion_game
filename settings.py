@@ -12,7 +12,7 @@ class Settings:
         self.ship_limit = 2
         # Bullet setings
         self.bullet_speed = 1.0
-        self.bullet_width = 10
+        self.bullet_width = 1000
         self.bullet_height = 30
         self.bullet_color = (60, 60, 60)
         self.bullets_allowed = 5
@@ -20,7 +20,7 @@ class Settings:
         self.alien_speed = 1.0
         # this fleet_drop_speed should be 1 as the fleet should come down after reaching edge
         # but some problem causes the fleet to come down at once
-        self.fleet_drop_speed = 0
+        self.fleet_drop_speed = 0.1
 
         # fleet_direction of 1 represents right and -1 represents left
         self.fleet_direction = 1
