@@ -4,7 +4,9 @@ from turtle import Screen
 
 import pygame
 
+from time import sleep
 from settings import Settings
+from game_stats import GameStats
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
@@ -21,6 +23,10 @@ class AlienInvasion:
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("Alien Invasion by @Sushovit204")
+
+        # Create an instance of the game stats
+        self.stats = GameStats(self)
+
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
@@ -35,6 +41,22 @@ class AlienInvasion:
             self._update_bullet()
             self._update_aliens()
             self._update_screen()
+
+    def _ship_hit(self):
+        """Respond to the ship being hit by the alien"""
+        # Decrement the no. of ships left
+        self.stats.ships_left -= 1
+
+        # Get rid of any bullets,aliens left
+        self.bullets.empty()
+        self.aliens.empty()
+
+        # creating new fleet and ship
+        self._create_fleet()
+        self.ship.centre_ship()
+
+        # Pause
+        sleep(0.5)
 
     def _check_events(self):
         # Watch for keyboard and mouse events.
@@ -102,7 +124,7 @@ class AlienInvasion:
 
         # Detect for alien collision with the ship
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
-            print("Ship Hit!!")
+            self._ship_hit()
 
     def _create_fleet(self):
         """Create fleet of aliens"""
